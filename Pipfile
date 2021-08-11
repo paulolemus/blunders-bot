@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+certifi = "==2021.5.30"
+chardet = "==4.0.0"
+idna = "==2.10"
+chess = "==1.5.0"
+requests = ">=2.25.1"
+urllib3 = "==1.26.6"
+backoff = "==1.10.0"
+PyYAML = ">=5.4.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+bot = "python lichess-bot.py"
+update = "python lichess-bot.py --update"

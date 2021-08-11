@@ -15,6 +15,7 @@ import time
 import backoff
 import sys
 from config import load_config
+from update_engine import update_engine
 from conversation import Conversation, ChatLine
 from functools import partial
 from requests.exceptions import ChunkedEncodingError, ConnectionError, HTTPError, ReadTimeout
@@ -430,6 +431,7 @@ if __name__ == "__main__":
     parser.add_argument('-v', action='store_true', help='Verbose output. Changes log level from INFO to DEBUG.')
     parser.add_argument('--config', help='Specify a configuration file (defaults to ./config.yml)')
     parser.add_argument('-l', '--logfile', help="Log file to append logs to.", default=None)
+    parser.add_argument('--update', action='store_true', help='Updates Blunders engine executable by building engine with cargo.')
     args = parser.parse_args()
 
     logging_level = logging.DEBUG if args.v else logging.INFO
@@ -437,6 +439,10 @@ if __name__ == "__main__":
                         format="%(asctime)-15s: %(message)s")
     enable_color_logging(debug_lvl=logging_level)
     logger.info(intro())
+
+    if args.update:
+        update_engine()
+
     CONFIG = load_config(args.config or "./config.yml")
     li = lichess.Lichess(CONFIG["token"], CONFIG["url"], __version__)
 

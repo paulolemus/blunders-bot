@@ -1,3 +1,17 @@
+# blunders-bot
+
+`lichess-bot` modified for easy deployment of `Blunders` chess engine. Requires `pipenv` and `cargo`.
+
+## Deploying:
+
+Clone repository with recursive submodules: `git clone --recurse-submodules https://github.com/paulolemus/blunders-bot.git`
+
+Add Lichess API token for bot account as `secret.txt` in root folder.
+
+Run `pipenv run bot` to run with an existing Blunders executable in `./engines`.
+
+Run `pipenv run update` to compile and use the newest version of Blunders engine from its submodule.
+
 # lichess-bot
 
 [![Python Build](https://github.com/ShailChoksi/lichess-bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/ShailChoksi/lichess-bot/actions/workflows/python-build.yml)

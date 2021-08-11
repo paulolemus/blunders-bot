@@ -1,0 +1,3 @@
+[submodule "blunders"]
+	path = blunders
+	url = https://github.com/paulolemus/blunders.git
