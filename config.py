@@ -62,9 +62,10 @@ def load_config(config_file):
 
         if not os.path.isfile(engine) and CONFIG["engine"]["protocol"] != "homemade":
             # Could not find base name, so try to find with extension.
-            engine_ext = os.path.join(engine_dir, engine_name + extension)
+            engine_ext_name = engine_name + extension
+            engine_ext = os.path.join(engine_dir, engine_ext_name)
             if os.path.isfile(engine_ext):
-                CONFIG["engine"]["name"] = engine_ext
+                CONFIG["engine"]["name"] = engine_ext_name
                 engine = engine_ext
             else:
                 raise Exception("The engine %s file does not exist." % engine)

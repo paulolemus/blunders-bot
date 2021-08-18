@@ -31,11 +31,17 @@ def update_engine():
 
     if os.path.isfile(engine_path):
         logger.info(f"Copying from {engine_path} to {engines_folder}...")
-        shutil.copy(engine_path, engines_folder)
+        try:
+            shutil.copy(engine_path, engines_folder)
+        except shutil.SameFileError:
+            pass
 
     elif os.path.isfile(engine_path_ext):
         logger.info(f"Copying from {engine_path_ext} to {engines_folder}...")
-        shutil.copy(engine_path_ext, engines_folder)
+        try:
+            shutil.copy(engine_path_ext, engines_folder)
+        except shutil.SameFileError:
+            pass
 
     else:
         raise Exception('Unable to copy Blunders executable to engines folder.')
